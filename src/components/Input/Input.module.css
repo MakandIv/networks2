@@ -1,0 +1,16 @@
+.input_block {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    text-align: left;
+    margin: 5px 0;
+}
+
+input {
+    padding: 0.5em;
+    width: 20em;
+    margin: 5px 0;
+    box-sizing: border-box;
+}

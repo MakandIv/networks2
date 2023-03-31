@@ -1,0 +1,44 @@
+.header {
+    height: 60px;
+    display: contents;
+    margin-left: auto;
+}
+
+.logo {
+    display: flex;
+    background: beige;
+    align-items: center;
+    padding: 10px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.profile {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+}
+
+.avatar {
+    border: black 1px solid;
+    border-radius: 50px;
+    margin-left: 0.5em;
+    width: 50px;
+    height: 50px;
+}
+
+.avatar > img {
+    width: inherit;
+    height: inherit;
+}
+
+.link {
+    align-items: center;
+    display: inherit;
+    text-decoration: none;
+    color: black;
+}

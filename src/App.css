@@ -1,3 +1,82 @@
+
+
+svg {
+  width: 40px;
+  height: 40px;
+}
+
+b {
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+span {
+  font-size: 13px;
+  opacity: .5;
+}
+
+ul {
+  display: flex;
+  cursor: pointer;
+}
+ul > li {
+  padding: 5px;
+  list-style-type: none;
+}
+
+ul > li > a {
+  text-decoration: none;
+  color: black;
+}
+
+ul > li:hover {
+  background: gray;
+}
+
+table {
+  border-radius: 5px;
+  background: aliceblue;
+}
+
+table > tbody {
+
+}
+
+table > tbody > tr:hover {
+  background: bisque;
+}
+
+table > tbody > tr > td {
+  border-bottom: 1px gray solid;
+  border-right: 1px gray solid;
+}
+
+table > tbody > tr:nth-child(even) {
+  background: antiquewhite;
+}
+
+table > tbody > tr:last-child > td {
+  border-bottom: 0;
+}
+
+table > tbody > tr > td:last-child {
+  border-right: 0;
+}
+
+table > tbody > tr > th {
+  background: khaki;
+  border-bottom: 1px gray solid;
+  border-right: 1px gray solid;
+}
+
+table > tbody > tr:last-child > th {
+  border-bottom: 0;
+}
+
+table > tbody > tr > th:last-child {
+  border-right: 0;
+}
+
 .App {
   text-align: center;
 }

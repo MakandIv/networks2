@@ -1,0 +1,13 @@
+.login {
+
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.error {
+    max-width: calc(16em + 10px);
+    margin-bottom: 0.5em;
+}
