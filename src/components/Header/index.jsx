@@ -1,4 +1,4 @@
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {BiNetworkChart} from "react-icons/bi";
 import {useTranslation} from "react-i18next";
 import styles from './Header.module.css';
@@ -7,7 +7,6 @@ import {useEffect, useState} from "react";
 import axios from "../../axios";
 
 const Header = () => {
-    const navigate = useNavigate()
     const {t} = useTranslation()
     const {firstName, lastName, role, avatarId} = useSelector((state) => state.user)
     const dispatch = useDispatch();
@@ -20,13 +19,15 @@ const Header = () => {
     }, [dispatch])
 
     useEffect(() => {
-        axios.get(`/files/${avatarId}`, {
-            responseType: 'blob',
-            headers: {Authorization: `Bearer ${localStorage.getItem("accessToken")}`}
-        }).then(({data}) => {
-            const url = window.URL.createObjectURL(data);
-            setAvatar(url);
-        })
+        if (avatarId) {
+            axios.get(`/files/${avatarId}`, {
+                responseType: 'blob',
+                headers: {Authorization: `Bearer ${localStorage.getItem("accessToken")}`}
+            }).then(({data}) => {
+                const url = window.URL.createObjectURL(data);
+                setAvatar(url);
+            })
+        }
     }, [avatarId])
 
 

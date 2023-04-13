@@ -1,8 +1,6 @@
 import React from 'react';
 import {Outlet} from "react-router-dom";
 import styles from './MinimalLayout.module.css';
-import i18n from "i18next";
-import {initReactI18next} from "react-i18next";
 
 const MinimalLayout = () => {
     return (

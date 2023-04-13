@@ -2,15 +2,18 @@ import React, {useEffect, useState} from 'react';
 import {useTranslation} from "react-i18next";
 import axios from "../../axios";
 import Pagination from "../../components/Pagination";
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
+import {Button} from "../../components";
 
 const Workshop = () => {
-    const {t} = useTranslation()
+    const {t} = useTranslation();
     const [workshops, setWorkshops] = useState([]);
+    const navigate = useNavigate();
 
-    let { search } = useLocation();
+    const { search } = useLocation();
     const params = new URLSearchParams(search);
     const page = Number(params.get('page')) || 1;
+    const limit = Number(params.get('limit')) || 10;
 
 
     useEffect(() => {
@@ -22,6 +25,7 @@ const Workshop = () => {
     return (
         <>
             <h2>{t("workshops")}</h2>
+            <Button onClick={() => navigate("/workshop/create")}>{t('add-workshop')}</Button>
             <table>
                 <tbody>
                     <tr>
@@ -31,19 +35,19 @@ const Workshop = () => {
                         <th>{t("boss")}</th>
                         <th>{t("schedule")}</th>
                     </tr>
-                    {workshops.map((workshop, index) => { return (
+                    {workshops.slice(((page - 1) * limit), page * limit).map((workshop, index) => { return (
                         <tr key={index}>
                             <td>{index + 1}</td>
                             <td>{workshop.name}</td>
                             <td>{workshop.number}</td>
-                            <td>{workshop.boss.lastName} {workshop.boss.firstName}</td>
+                            <td>{workshop.boss?.lastName || "null"} {workshop.boss?.firstName || ""}</td>
                             <td>{workshop.schedule}</td>
                         </tr>
                     )
                     })}
                 </tbody>
             </table>
-            <Pagination page={page} numberPages={Math.ceil(workshops.length / 10)} limit={10}/>
+            <Pagination page={page} numberPages={Math.ceil(workshops.length / limit)} limit={limit}/>
         </>
     );
 };

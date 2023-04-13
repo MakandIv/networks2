@@ -3,7 +3,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 1.5em;
 }
 
 .section {
@@ -27,6 +27,7 @@
     border-radius: 5px;
     border: solid 2px rgba(90, 156, 255, 0.3);
     margin: 0 2px;
+    cursor: pointer;
 }
 
 .current_page {

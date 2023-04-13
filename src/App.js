@@ -19,6 +19,9 @@ i18n.use(initReactI18next).init({
                 "USER": "User",
                 "ADMIN": "Administrator",
 
+                "save": "Save",
+                "cancel": "Cancel",
+
                 "login": "Log in",
                 "submit-login": "Log in",
                 "email": "E-mail",
@@ -26,6 +29,23 @@ i18n.use(initReactI18next).init({
                 "email-invalid": "Invalid email",
                 "password": "Password",
                 "password-required": "Password required",
+
+                "number-list": "#",
+                "workshop-name": "Name",
+                "workshop-number": "Number",
+                "boss": "Foreman",
+                "schedule": "Schedule",
+                "profession": "Profession",
+                "profession-name": "Profession Name",
+                "amount": "Amount",
+                "grade": "Grade",
+                "article-allowance": "Article",
+
+                "add-workshop": "Add Workshop",
+                "add-salary": "Add Salary",
+                "add-allowance": "Add Allowance",
+                "add-profession": "Add Profession"
+
             }
         },
         ru: {
@@ -42,6 +62,9 @@ i18n.use(initReactI18next).init({
                 "USER": "Пользователь",
                 "ADMIN": "Администратор",
 
+                "save": "Сохранить",
+                "cancel": "Отмена",
+
                 "login": "Вход",
                 "submit-login": "Войти",
                 "email": "Эл. почта",
@@ -49,6 +72,22 @@ i18n.use(initReactI18next).init({
                 "email-invalid": "Неверный адрес эл. почты",
                 'password': "Пароль",
                 "password-required": "Введите пароль",
+
+                "number-list": "№",
+                "workshop-name": "Название",
+                "workshop-number": "Номер",
+                "boss": "Начальник цеха",
+                "schedule": "Расписание",
+                "profession": "Профессия",
+                "profession-name": "Название профессии",
+                "amount": "Сумма",
+                "grade": "Разряд",
+                "article-allowance": "Название",
+
+                "add-workshop": "Добавить цех",
+                "add-salary": "Добавить зарплату",
+                "add-allowance": "Добавить надбавку",
+                "add-profession": "Добавить профессию"
             }
         }
     },

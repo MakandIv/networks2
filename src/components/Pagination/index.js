@@ -27,7 +27,7 @@ const Pagination = ({ page, numberPages, limit }) => {
                         },
                         (_, i) => (Number(page) === 1 ? Number(page) : Number(page - 1)) + i).map(
                         (element) => (
-                            <div
+                            <div onClick={() => navigate(`?page=${element}&limit=${limit}`) }
                                 key={element}
                                 className={Number(page) === Number(element) ? `${styles.page} ${styles.current_page}` : `${styles.page}`}>
                                 {element}
