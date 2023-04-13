@@ -72,66 +72,65 @@ const AllowanceForm = () => {
                 <h3>{!id ? t("add-allowance") : t('edit-allowance')}</h3>
                 <hr/>
             </div>
-            {data ?
-            <Formik
-                initialValues={{
-                    article: data.article,
-                    amount: data.amount
-                }}
-                validateOnBlur
-                onSubmit={(values) => saveAllowance(values)}
-                validationSchema={validationSchema}>
-                {
-                    ({values, errors, touched, handleReset, handleChange, handleBlur, isValid, handleSubmit}) => (
-                        <form className='container'>
-                            <Input
-                                type={`text`}
-                                name={'article'}
-                                label={t('article-allowance')}
-                                required
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.article}/>
+            {data || !contains(pathname, "edit") ?
+                <Formik
+                    initialValues={{
+                        article: data?.article,
+                        amount: data?.amount
+                    }}
+                    validateOnBlur
+                    onSubmit={(values) => saveAllowance(values)}
+                    validationSchema={validationSchema}>
+                    {
+                        ({values, errors, touched, handleChange, handleBlur, isValid, handleSubmit}) => (
+                            <form className='container'>
+                                <Input
+                                    type={`text`}
+                                    name={'article'}
+                                    label={t('article-allowance')}
+                                    required
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.article}/>
 
-                            {touched.article && errors.article &&
-                                <div className="error"><span>{errors.article}</span></div>}
+                                {touched.article && errors.article &&
+                                    <div className="error"><span>{errors.article}</span></div>}
 
-                            <Input
-                                type={`number`}
-                                name={'amount'}
-                                label={t('amount')}
-                                required
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.password}/>
+                                <Input
+                                    type={`number`}
+                                    name={'amount'}
+                                    label={t('amount')}
+                                    required
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.amount}/>
 
-                            {touched.amount && errors.amount &&
-                                <div className="error"><span>{errors.amount}</span></div>}
+                                {touched.amount && errors.amount &&
+                                    <div className="error"><span>{errors.amount}</span></div>}
 
-                            <div>
-                                <Button
-                                    style={{width: "50%"}}
-                                    disabled={!isValid}
-                                    onClick={handleSubmit}
-                                    type={`submit`}>
-                                    {t('save')}
-                                </Button>
-                                <Button
-                                    style={{width: "50%"}}
-                                    onClick={() => navigate("/allowance")}
-                                    type={`cancel`}>
-                                    {t('cancel')}
-                                </Button>
-                            </div>
+                                <div>
+                                    <Button
+                                        style={{width: "50%"}}
+                                        disabled={!isValid}
+                                        onClick={handleSubmit}
+                                        type={`submit`}>
+                                        {t('save')}
+                                    </Button>
+                                    <Button
+                                        style={{width: "50%"}}
+                                        onClick={() => navigate("/allowance")}
+                                        type={`cancel`}>
+                                        {t('cancel')}
+                                    </Button>
+                                </div>
 
-
-                            <div className="error">
-                                <span>{error}</span>
-                            </div>
-                        </form>
-                    )
-                }
-            </Formik>
+                                <div className="error">
+                                    <span>{error}</span>
+                                </div>
+                            </form>
+                        )
+                    }
+                </Formik>
                 : <></>
             }
         </div>

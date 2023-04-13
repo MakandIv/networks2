@@ -16,7 +16,6 @@ const Allowance = () => {
     const page = Number(params.get('page')) || 1;
     const limit = Number(params.get('limit')) || 10;
 
-
     useEffect(() => {
         axios.get("/allowance/list", {headers: {Authorization: `Bearer ${localStorage.getItem("accessToken")}`}}).then(({data}) => {
             setAllowances(data);
@@ -26,6 +25,8 @@ const Allowance = () => {
     return (<>
             <h2>{t("allowances")}</h2>
             <Button onClick={() => navigate("/allowance/create")}>{t('add-allowance')}</Button>
+            <br/>
+            <span>{t('findStrings', {count: allowances.length })}</span>
             <table>
                 <tbody>
                 <tr>
@@ -39,7 +40,12 @@ const Allowance = () => {
                         <td>{index + 1}</td>
                         <td>{allowance.article}</td>
                         <td>{allowance.amount}</td>
-                        <td><div className="td_edit"><BiEdit onClick={() => navigate(`/allowance/edit?id=${allowance.id}`)}/><BiTrash onClick={() => console.log("Delete")}/></div></td>
+                        <td>
+                            <div className="td_edit">
+                                <BiEdit className="bi-btn" onClick={() => navigate(`/allowance/edit?id=${allowance.id}`)}/>
+                                <BiTrash className="bi-btn" onClick={() => navigate(`/allowance/delete?id=${allowance.id}`)}/>
+                            </div>
+                        </td>
                     </tr>
                 )
                 })}

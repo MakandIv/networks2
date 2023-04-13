@@ -41,8 +41,15 @@ table > tbody {
 
 }
 
+table > tbody > tr {
+}
+
 table > tbody > tr:hover {
   background: bisque !important;
+}
+
+table > tbody > tr:active {
+  background: darkgoldenrod;
 }
 
 table > tbody > tr > td {
@@ -127,11 +134,6 @@ table > tbody > tr > th:last-child {
   margin-left: 0.5em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.bi-btn:hover {
+  color: firebrick;
 }

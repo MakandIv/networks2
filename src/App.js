@@ -44,7 +44,16 @@ i18n.use(initReactI18next).init({
                 "add-workshop": "Add Workshop",
                 "add-salary": "Add Salary",
                 "add-allowance": "Add Allowance",
-                "add-profession": "Add Profession"
+                "add-profession": "Add Profession",
+
+                "edit-workshop": "Edit Workshop",
+                "edit-salary": "Edit Salary",
+                "edit-allowance": "Edit Allowance",
+                "edit-profession": "Edit Profession",
+
+                "findStrings_zero": "No records were found for your request.",
+                "findStrings_one": "{{count}} record found for your request.",
+                "findStrings_many": "{{count}} records found for your request."
 
             }
         },
@@ -87,7 +96,17 @@ i18n.use(initReactI18next).init({
                 "add-workshop": "Добавить цех",
                 "add-salary": "Добавить зарплату",
                 "add-allowance": "Добавить надбавку",
-                "add-profession": "Добавить профессию"
+                "add-profession": "Добавить профессию",
+
+                "edit-workshop": "Редактировать цех",
+                "edit-salary": "Редактировать зарплату",
+                "edit-allowance": "Редактировать надбавку",
+                "edit-profession": "Редактировать профессию",
+
+                "findStrings_zero": "По вашему запросу не найдено записей.",
+                "findStrings_one": "По вашему запросу найдена {{count}} запись.",
+                "findStrings_few": "По вашему запросу найдено {{count}} записи.",
+                "findStrings_many": "По вашему запросу найдено {{count}} записей."
             }
         }
     },

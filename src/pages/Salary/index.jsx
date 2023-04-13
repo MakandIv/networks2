@@ -4,6 +4,7 @@ import axios from "../../axios";
 import Pagination from "../../components/Pagination";
 import {useLocation, useNavigate} from "react-router-dom";
 import {Button} from "../../components";
+import {BiEdit, BiTrash} from "react-icons/bi";
 
 const Salary = () => {
     const {t} = useTranslation();
@@ -26,6 +27,8 @@ const Salary = () => {
         <>
             <h2>{t("salaries")}</h2>
             <Button onClick={() => navigate('/salary/create')}>{t('add-salary')}</Button>
+            <br/>
+            <span>{t('findStrings', {count: salaries.length })}</span>
             <table>
                 <tbody>
                 <tr>
@@ -33,6 +36,7 @@ const Salary = () => {
                     <th>{t("profession")}</th>
                     <th>{t("amount")}</th>
                     <th>{t("grade")}</th>
+                    <th>{t("...")}</th>
                 </tr>
                 {salaries.slice(((page - 1) * limit), page * limit).map((salary, index) => { return (
                     <tr key={index}>
@@ -40,6 +44,12 @@ const Salary = () => {
                         <td>{salary.profession?.name || null}</td>
                         <td>{salary.amount}</td>
                         <td>{salary.grade}</td>
+                        <td>
+                            <div className="td_edit">
+                                <BiEdit className="bi-btn" onClick={() => navigate(`/salary/edit?id=${salary.id}`)}/>
+                                <BiTrash className="bi-btn" onClick={() => navigate(`/salary/delete?id=${salary.id}`)}/>
+                            </div>
+                        </td>
                     </tr>
                 )
                 })}

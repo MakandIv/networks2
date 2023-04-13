@@ -4,6 +4,7 @@ import axios from "../../axios";
 import Pagination from "../../components/Pagination";
 import {useLocation, useNavigate} from "react-router-dom";
 import {Button} from "../../components";
+import {BiEdit, BiTrash} from "react-icons/bi";
 
 const Workshop = () => {
     const {t} = useTranslation();
@@ -26,6 +27,8 @@ const Workshop = () => {
         <>
             <h2>{t("workshops")}</h2>
             <Button onClick={() => navigate("/workshop/create")}>{t('add-workshop')}</Button>
+            <br/>
+            <span>{t('findStrings', {count: workshops.length })}</span>
             <table>
                 <tbody>
                     <tr>
@@ -34,6 +37,7 @@ const Workshop = () => {
                         <th>{t("workshop-number")}</th>
                         <th>{t("boss")}</th>
                         <th>{t("schedule")}</th>
+                        <th>{t("...")}</th>
                     </tr>
                     {workshops.slice(((page - 1) * limit), page * limit).map((workshop, index) => { return (
                         <tr key={index}>
@@ -42,6 +46,12 @@ const Workshop = () => {
                             <td>{workshop.number}</td>
                             <td>{workshop.boss?.lastName || "null"} {workshop.boss?.firstName || ""}</td>
                             <td>{workshop.schedule}</td>
+                            <td>
+                                <div className="td_edit">
+                                    <BiEdit className="bi-btn" onClick={() => navigate(`/workshop/edit?id=${workshop.id}`)}/>
+                                    <BiTrash className="bi-btn" onClick={() => navigate(`/workshop/delete?id=${workshop.id}`)}/>
+                                </div>
+                            </td>
                         </tr>
                     )
                     })}

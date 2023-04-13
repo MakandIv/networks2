@@ -4,6 +4,7 @@ import axios from "../../axios";
 import Pagination from "../../components/Pagination";
 import {useLocation, useNavigate} from "react-router-dom";
 import {Button} from "../../components";
+import {BiEdit, BiTrash} from "react-icons/bi";
 
 const Profession = () => {
     const {t} = useTranslation();
@@ -26,16 +27,25 @@ const Profession = () => {
         <>
             <h2>{t("professions")}</h2>
             <Button onClick={() => navigate("/profession/create")}>{t('add-profession')}</Button>
+            <br/>
+            <span>{t('findStrings', {count: professions.length })}</span>
             <table>
                 <tbody>
                 <tr>
                     <th>{t("number-list")}</th>
                     <th>{t("profession")}</th>
+                    <th>{t("...")}</th>
                 </tr>
                 {professions.slice(((page - 1) * limit), page * limit).map((profession, index) => { return (
                     <tr key={index}>
                         <td>{index + 1}</td>
                         <td>{profession.name}</td>
+                        <td>
+                            <div className="td_edit">
+                                <BiEdit className="bi-btn" onClick={() => navigate(`/profession/edit?id=${profession.id}`)}/>
+                                <BiTrash className="bi-btn" onClick={() => navigate(`/profession/delete?id=${profession.id}`)}/>
+                            </div>
+                        </td>
                     </tr>
                 )
                 })}
