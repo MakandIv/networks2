@@ -5,6 +5,7 @@ import Pagination from "../../components/Pagination";
 import {useLocation, useNavigate} from "react-router-dom";
 import {Button} from "../../components";
 import {BiEdit, BiTrash} from "react-icons/bi";
+import {RequiredAdminRight} from "../../utilities";
 
 const Salary = () => {
     const {t} = useTranslation();
@@ -26,7 +27,7 @@ const Salary = () => {
     return (
         <>
             <h2>{t("salaries")}</h2>
-            <Button onClick={() => navigate('/salary/create')}>{t('add-salary')}</Button>
+            <RequiredAdminRight><Button onClick={() => navigate('/salary/create')}>{t('add-salary')}</Button></RequiredAdminRight>
             <br/>
             <span>{t('findStrings', {count: salaries.length })}</span>
             <table>
@@ -36,7 +37,7 @@ const Salary = () => {
                     <th>{t("profession")}</th>
                     <th>{t("amount")}</th>
                     <th>{t("grade")}</th>
-                    <th>{t("...")}</th>
+                    <RequiredAdminRight><th>{t("...")}</th></RequiredAdminRight>
                 </tr>
                 {salaries.slice(((page - 1) * limit), page * limit).map((salary, index) => { return (
                     <tr key={index}>
@@ -44,12 +45,12 @@ const Salary = () => {
                         <td>{salary.profession?.name || null}</td>
                         <td>{salary.amount}</td>
                         <td>{salary.grade}</td>
-                        <td>
+                        <RequiredAdminRight><td>
                             <div className="td_edit">
                                 <BiEdit className="bi-btn" onClick={() => navigate(`/salary/edit?id=${salary.id}`)}/>
                                 <BiTrash className="bi-btn" onClick={() => navigate(`/salary/delete?id=${salary.id}`)}/>
                             </div>
-                        </td>
+                        </td></RequiredAdminRight>
                     </tr>
                 )
                 })}

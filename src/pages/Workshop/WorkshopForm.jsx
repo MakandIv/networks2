@@ -81,7 +81,7 @@ const WorkshopForm = () => {
     return (
         <div style={{width: "20em", margin: "auto"}}>
             <div className='title'>
-                <h3>{!id ? t("add-workshop") : t('edit-workshop')}</h3>
+                <h2>{!id ? t("add-workshop") : t('edit-workshop')}</h2>
                 <hr/>
             </div>
             {data || !(contains(pathname, "edit")) ?
@@ -122,6 +122,7 @@ const WorkshopForm = () => {
 
                                 <Select name={'bossId'} label={t('boss')} value={values.professionId}
                                         onChange={handleChange} onBlur={handleBlur}>
+                                    <option key={0} value={null} name={""}> </option>
                                     {bosses.map((value) => {
                                         return <option key={value.id} value={value.id}
                                                        name={value.id}>{value.firstName} {value.lastName}</option>

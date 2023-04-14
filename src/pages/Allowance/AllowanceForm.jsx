@@ -69,7 +69,7 @@ const AllowanceForm = () => {
     return (
         <div style={{width: "20em", margin: "auto"}}>
             <div className='title'>
-                <h3>{!id ? t("add-allowance") : t('edit-allowance')}</h3>
+                <h2>{!id ? t("add-allowance") : t('edit-allowance')}</h2>
                 <hr/>
             </div>
             {data || !contains(pathname, "edit") ?

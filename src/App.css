@@ -3,13 +3,16 @@ svg {
   height: 40px;
 }
 
+h2 {
+  padding-top: .5em;
+}
+
 b {
-  font-size: 13px;
-  text-transform: uppercase;
+
 }
 
 span {
-  font-size: 13px;
+  font-size: 14px;
   opacity: .5;
 }
 

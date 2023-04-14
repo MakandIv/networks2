@@ -67,7 +67,7 @@ const ProfessionForm = () => {
     return (
         <div style={{width: "20em", margin: "auto"}}>
             <div className='title'>
-                <h3>{!id ? t("add-profession") : t('edit-profession')}</h3>
+                <h2>{!id ? t("add-profession") : t('edit-profession')}</h2>
                 <hr/>
             </div>
             {data || !contains(pathname, "edit") ?

@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import styles from './Login.module.css';
 import {useTranslation} from "react-i18next";
-import {Input, Button} from "../../components";
+import {Input, Button} from "../../../components";
 import {Formik} from 'formik'
 import {useNavigate} from "react-router-dom";
-import axios from "../../axios";
+import axios from "../../../axios";
 import * as yup from 'yup';
 
 

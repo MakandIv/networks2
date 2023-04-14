@@ -23,6 +23,8 @@ const userReducer = (state = initialState, action) => {
                 role: action.role,
                 gender: action.gender
             };
+        case "RESET_DATA":
+            return initialState
         default:
             return state;
     }

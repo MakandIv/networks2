@@ -21,14 +21,12 @@ const Pagination = ({ page, numberPages, limit }) => {
                 <div className={styles.pages}>
                     {Number(numberPages) >= 1 ?
                     Array.from({
-                            length: ((page) === 1
-                                ? (Number(page) === Number(numberPages) ? 1 : 2)
-                                : (Number(page) === Number(numberPages) ? 2 : 3))
+                            length: (numberPages <= 3 ? numberPages : 3)
                         },
-                        (_, i) => (Number(page) === 1 ? Number(page) : Number(page - 1)) + i).map(
+                        (_, i) => (Number(page) === 1 ? Number(page) : Number(page) === numberPages ? Number(page) - 2 : Number(page) - 1) + i).map(
                         (element) => (
                             <div onClick={() => navigate(`?page=${element}&limit=${limit}`) }
-                                key={element}
+                                key={Number(element)}
                                 className={Number(page) === Number(element) ? `${styles.page} ${styles.current_page}` : `${styles.page}`}>
                                 {element}
                             </div>

@@ -5,6 +5,7 @@ import Pagination from "../../components/Pagination";
 import {useLocation, useNavigate} from "react-router-dom";
 import {Button} from "../../components";
 import {BiEdit, BiTrash} from "react-icons/bi";
+import {RequiredAdminRight} from "../../utilities";
 
 const Allowance = () => {
     const {t} = useTranslation()
@@ -24,7 +25,7 @@ const Allowance = () => {
 
     return (<>
             <h2>{t("allowances")}</h2>
-            <Button onClick={() => navigate("/allowance/create")}>{t('add-allowance')}</Button>
+            <RequiredAdminRight><Button onClick={() => navigate("/allowance/create")}>{t('add-allowance')}</Button></RequiredAdminRight>
             <br/>
             <span>{t('findStrings', {count: allowances.length })}</span>
             <table>
@@ -33,19 +34,19 @@ const Allowance = () => {
                     <th>{t("number-list")}</th>
                     <th>{t("article-allowance")}</th>
                     <th>{t("amount")}</th>
-                    <th>{t("...")}</th>
+                    <RequiredAdminRight><th>{t("...")}</th></RequiredAdminRight>
                 </tr>
                 {allowances.slice(((page - 1) * limit), page * limit).map((allowance, index) => { return (
                     <tr key={index}>
                         <td>{index + 1}</td>
                         <td>{allowance.article}</td>
                         <td>{allowance.amount}</td>
-                        <td>
+                        <RequiredAdminRight><td>
                             <div className="td_edit">
                                 <BiEdit className="bi-btn" onClick={() => navigate(`/allowance/edit?id=${allowance.id}`)}/>
                                 <BiTrash className="bi-btn" onClick={() => navigate(`/allowance/delete?id=${allowance.id}`)}/>
                             </div>
-                        </td>
+                        </td></RequiredAdminRight>
                     </tr>
                 )
                 })}

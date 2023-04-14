@@ -1,10 +1,14 @@
 import {lazy} from 'react';
 import {MainLayout} from "../layouts";
-import {RequiredAuth} from "../utilities";
+import {RequiredAdminRight, RequiredAuth} from "../utilities";
 import {Loadable} from "../components";
 
-const ProfilePage = Loadable(lazy(() => import('../pages/Profile')));
 const MainPage = Loadable(lazy(() => import('../pages/MainPage')));
+
+const ProfilePage = Loadable(lazy(() => import('../pages/UserPages/Profile')));
+const ProfileFormPage = Loadable(lazy(() => import('../pages/UserPages/ProfileForm')));
+const ProfileChangePasswordPage = Loadable(lazy(() => import('../pages/UserPages/ProfileForm/ChangePassword')));
+
 const WorkshopPage = Loadable(lazy(() => import('../pages/Workshop')));
 const AllowancePage = Loadable(lazy(() => import('../pages/Allowance')));
 const ProfessionPage = Loadable(lazy(() => import('../pages/Profession')));
@@ -14,6 +18,8 @@ const WorkshopFormPage = Loadable(lazy(() => import('../pages/Workshop/WorkshopF
 const AllowanceFormPage = Loadable(lazy(() => import('../pages/Allowance/AllowanceForm')));
 const ProfessionFormPage = Loadable(lazy(() => import('../pages/Profession/ProfessionForm')));
 const SalaryFormPage = Loadable(lazy(() => import('../pages/Salary/SalaryForm')));
+
+const DeletePage = Loadable(lazy(() => import('../pages/Delete')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -35,11 +41,32 @@ const MainRoutes = {
         },
         {
             path: 'profile',
-            element: (
-                <RequiredAuth>
-                    <ProfilePage/>
-                </RequiredAuth>
-            )
+            children: [
+                {
+                    path: "",
+                    element: (
+                        <RequiredAuth>
+                            <ProfilePage/>
+                        </RequiredAuth>
+                    )
+                },
+                {
+                    path: "edit",
+                    element: (
+                        <RequiredAuth>
+                            <ProfileFormPage/>
+                        </RequiredAuth>
+                    )
+                },
+                {
+                    path: "password",
+                    element: (
+                        <RequiredAuth>
+                            <ProfileChangePasswordPage/>
+                        </RequiredAuth>
+                    )
+                }
+            ]
         },
         {
             path: 'workshop',
@@ -65,6 +92,16 @@ const MainRoutes = {
                     element: (
                         <RequiredAuth>
                             <WorkshopFormPage/>
+                        </RequiredAuth>
+                    )
+                },
+                {
+                    path: "delete",
+                    element: (
+                        <RequiredAuth>
+                            <RequiredAdminRight>
+                                <DeletePage/>
+                            </RequiredAdminRight>
                         </RequiredAuth>
                     )
                 }
@@ -96,6 +133,16 @@ const MainRoutes = {
                             <AllowanceFormPage/>
                         </RequiredAuth>
                     )
+                },
+                {
+                    path: "delete",
+                    element: (
+                        <RequiredAuth>
+                            <RequiredAdminRight>
+                                <DeletePage/>
+                            </RequiredAdminRight>
+                        </RequiredAuth>
+                    )
                 }
             ]
         },
@@ -125,6 +172,16 @@ const MainRoutes = {
                             <ProfessionFormPage/>
                         </RequiredAuth>
                     )
+                },
+                {
+                    path: "delete",
+                    element: (
+                        <RequiredAuth>
+                            <RequiredAdminRight>
+                                <DeletePage/>
+                            </RequiredAdminRight>
+                        </RequiredAuth>
+                    )
                 }
             ]
         },
@@ -152,6 +209,16 @@ const MainRoutes = {
                     element: (
                         <RequiredAuth>
                             <SalaryFormPage/>
+                        </RequiredAuth>
+                    )
+                },
+                {
+                    path: "delete",
+                    element: (
+                        <RequiredAuth>
+                            <RequiredAdminRight>
+                                <DeletePage/>
+                            </RequiredAdminRight>
                         </RequiredAuth>
                     )
                 }

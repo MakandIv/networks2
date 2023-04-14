@@ -10,7 +10,7 @@ const Header = () => {
     const {t} = useTranslation()
     const {firstName, lastName, role, avatarId} = useSelector((state) => state.user)
     const dispatch = useDispatch();
-    const [avatar, setAvatar] = useState();
+    const [avatar, setAvatar] = useState("");
 
     useEffect(() => {
         axios.get("/user", {headers: {Authorization: `Bearer ${localStorage.getItem("accessToken")}`}}).then(({data}) => {

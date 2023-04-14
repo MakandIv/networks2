@@ -79,10 +79,10 @@ const SalaryForm = () => {
     return (
         <div style={{width: "20em", margin: "auto"}}>
             <div className='title'>
-                <h3>{!id ? t("add-salary") : t('edit-salary')}</h3>
+                <h2>{!id ? t("add-salary") : t('edit-salary')}</h2>
                 <hr/>
             </div>
-            {data || !contains(pathname, "edit") ?
+            {professions && (data || !contains(pathname, "edit")) ?
                 <Formik
                     initialValues={{
                         professionId: data?.profession?.id,
@@ -102,10 +102,11 @@ const SalaryForm = () => {
                                     onChange={handleChange}
                                     required
                                     onBlur={handleBlur}>
-                                    {professions.map((value) => {
-                                        return <option key={value.id} value={value.id}
+                                    <option value=""></option>
+                                    {professions.map((value) =>
+                                        <option key={value.id} value={value.id}
                                                        name={value.id}>{value.name}</option>
-                                    })}
+                                    )}
                                 </Select>
 
                                 {touched.professionId && errors.professionId &&

@@ -4,8 +4,8 @@ import {RequiredNoAuth} from "../utilities";
 import {lazy} from "react";
 
 
-const LoginPage = Loadable(lazy(() => import('../pages/Login')));
-const RegistrationPage = Loadable(lazy(() => import('../pages/Registration')))
+const LoginPage = Loadable(lazy(() => import('../pages/UserPages/Login')));
+const RegistrationPage = Loadable(lazy(() => import('../pages/UserPages/Registration')))
 
 const AuthenticationRoutes = {
     path: '/',

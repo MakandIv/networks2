@@ -1,0 +1,17 @@
+.block {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    text-align: left;
+}
+
+.inputs {
+    text-align: left;
+    margin: auto;
+}
+
+.input > label {
+    margin: .5em;
+}
