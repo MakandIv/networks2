@@ -47,8 +47,7 @@ const ProfileForm = () => {
         axios
             .patch("/user", data, {headers: {Authorization: `Bearer ${localStorage.getItem("accessToken")}`}})
             .then(({data}) => {
-                console.log(data)
-                // navigate("/profile")
+                navigate("/profile")
             })
             .catch((error) => {
                 console.warn(error);

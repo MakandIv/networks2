@@ -1,7 +1,8 @@
 import {Loadable} from "../components";
 import {MinimalLayout} from "../layouts";
 import {RequiredNoAuth} from "../utilities";
-import {lazy} from "react";
+import {lazy, useEffect} from "react";
+import {setI18n} from "react-i18next";
 
 
 const LoginPage = Loadable(lazy(() => import('../pages/UserPages/Login')));

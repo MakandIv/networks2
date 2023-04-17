@@ -23,7 +23,7 @@ const Pagination = ({ page, numberPages, limit }) => {
                     Array.from({
                             length: (numberPages <= 3 ? numberPages : 3)
                         },
-                        (_, i) => (Number(page) === 1 ? Number(page) : Number(page) === numberPages ? Number(page) - 2 : Number(page) - 1) + i).map(
+                        (_, i) => (Number(page) === 1 ? Number(page) : Number(page) === numberPages ? Number(page) - 2 | 1 : Number(page) - 1) + i).map(
                         (element) => (
                             <div onClick={() => navigate(`?page=${element}&limit=${limit}`) }
                                 key={Number(element)}

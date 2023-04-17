@@ -10,7 +10,7 @@ const Profile = () => {
     const {t} = useTranslation()
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const {avatarId, fastName, firstName, patronymic, email, role, gender} = useSelector((state) => state.user)
+    const {avatarId, lastName, firstName, patronymic, email, role, gender} = useSelector((state) => state.user)
 
     return (
         <div className={styles.profileBlock}>
@@ -21,7 +21,7 @@ const Profile = () => {
             <div>
                 <p>{t("email")}: <b>{email}</b></p>
                 <hr/>
-                <p>{t("fullName")}: <b>{fastName || ""} {firstName || ""} {patronymic || ""}</b></p>
+                <p>{t("fullName")}: <b>{lastName || ""} {firstName || ""} {patronymic || ""}</b></p>
                 <hr/>
                 <p>{t("role")}: {t(role)}</p>
                 <hr/>
@@ -30,7 +30,12 @@ const Profile = () => {
             </div>
             <Button onClick={() => navigate("edit")}>{t("edit")}</Button>
             <Button onClick={() => navigate("password")}>{t("changePassword")}</Button>
-            <Button onClick={() => {localStorage.clear(); dispatch({type: "RESET_DATA"}); navigate("/login")}}>{t("logout")}</Button>
+            <Button onClick={() => {
+                localStorage.setItem("accessToken", '');
+                localStorage.setItem("refreshToken", '');
+                dispatch({type: "RESET_DATA"});
+                navigate("/login")
+            }}>{t("logout")}</Button>
         </div>
     );
 };

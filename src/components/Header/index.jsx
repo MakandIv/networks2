@@ -5,9 +5,10 @@ import styles from './Header.module.css';
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import axios from "../../axios";
+import {RequiredAdminRight} from "../../utilities";
 
 const Header = () => {
-    const {t} = useTranslation()
+    const {t, i18n} = useTranslation()
     const {firstName, lastName, role, avatarId} = useSelector((state) => state.user)
     const dispatch = useDispatch();
     const [avatar, setAvatar] = useState("");
@@ -30,7 +31,6 @@ const Header = () => {
         }
     }, [avatarId])
 
-
     return (
         <header className={styles.header}>
             <div className={styles.logo}>
@@ -46,8 +46,10 @@ const Header = () => {
                     <li><Link to="profession" className={styles.link}>{t('professions')}</Link></li>
                     <li><Link to="salary" className={styles.link}>{t('salaries')}</Link></li>
                     <li><Link to="allowance" className={styles.link}>{t('allowances')}</Link></li>
+                    <RequiredAdminRight><li><Link to="worker_salary" className={styles.link}>{t('worker_salaries')}</Link></li></RequiredAdminRight>
                 </ul>
                 <div style={{margin: "auto"}}></div>
+                <p style={{marginRight: '0.5em', cursor: 'pointer'}} onClick={() => {localStorage.setItem("lang", t('next-lang')); return i18n.changeLanguage(t('next-lang'))}}>{t('next-lang')}</p>
                 <Link to="profile" className={styles.link}>
                     <div className={styles.profile}>
                         <b>{firstName} {lastName}</b>

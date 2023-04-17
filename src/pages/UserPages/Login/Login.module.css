@@ -1,8 +1,12 @@
 .login {
-
+    width: 20em;
 }
 
 .inputs {
     display: flex;
     flex-direction: column;
+}
+
+.error {
+
 }

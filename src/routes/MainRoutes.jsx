@@ -13,11 +13,13 @@ const WorkshopPage = Loadable(lazy(() => import('../pages/Workshop')));
 const AllowancePage = Loadable(lazy(() => import('../pages/Allowance')));
 const ProfessionPage = Loadable(lazy(() => import('../pages/Profession')));
 const SalaryPage = Loadable(lazy(() => import('../pages/Salary')));
+const UserSalaryPage = Loadable(lazy(() => import('../pages/UserSalary')));
 
 const WorkshopFormPage = Loadable(lazy(() => import('../pages/Workshop/WorkshopForm')));
 const AllowanceFormPage = Loadable(lazy(() => import('../pages/Allowance/AllowanceForm')));
 const ProfessionFormPage = Loadable(lazy(() => import('../pages/Profession/ProfessionForm')));
 const SalaryFormPage = Loadable(lazy(() => import('../pages/Salary/SalaryForm')));
+const UserSalaryFormPage = Loadable(lazy(() => import('../pages/UserSalary/UserSalaryForm')));
 
 const DeletePage = Loadable(lazy(() => import('../pages/Delete')));
 
@@ -209,6 +211,51 @@ const MainRoutes = {
                     element: (
                         <RequiredAuth>
                             <SalaryFormPage/>
+                        </RequiredAuth>
+                    )
+                },
+                {
+                    path: "delete",
+                    element: (
+                        <RequiredAuth>
+                            <RequiredAdminRight>
+                                <DeletePage/>
+                            </RequiredAdminRight>
+                        </RequiredAuth>
+                    )
+                }
+            ]
+        },
+        {
+            path: 'worker_salary',
+            children: [
+                {
+                    path: "",
+                    element: (
+                        <RequiredAuth>
+                            <RequiredAdminRight>
+                            <UserSalaryPage/>
+                            </RequiredAdminRight>
+                        </RequiredAuth>
+                    ),
+                },
+                {
+                    path: "create",
+                    element: (
+                        <RequiredAuth>
+                            <RequiredAdminRight>
+                            <UserSalaryFormPage/>
+                            </RequiredAdminRight>
+                        </RequiredAuth>
+                    )
+                },
+                {
+                    path: "edit",
+                    element: (
+                        <RequiredAuth>
+                            <RequiredAdminRight>
+                            <UserSalaryFormPage/>
+                            </RequiredAdminRight>
                         </RequiredAuth>
                     )
                 },

@@ -32,8 +32,8 @@ const ChangePassword = () => {
         currentPassword: yup.string().typeError(t('type-error')).required(t('currentPassword-required')),
         newPassword: yup.string().min(8, t('password-min', {count: 8}))
             .matches(/[0-9]/, t('password-number'))
-            .matches(/[a-z]/, t('password-lc'))
-            .matches(/[A-Z]/, t('password-uc'))
+            .matches(/[a-zа-яё]/, t('password-lc'))
+            .matches(/[A-ZА-ЯЁ]/, t('password-uc'))
             .matches(/\W/, t('password-symbol')).typeError(t('type-error')).required(t('newPassword-required')),
         newPasswordConfirm: yup.string().oneOf([yup.ref('newPassword')], t("confirm-required")).typeError(t('type-error')).required(t('newPassword-required')),
     })

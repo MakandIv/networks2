@@ -140,3 +140,20 @@ table > tbody > tr > th:last-child {
 .bi-btn:hover {
   color: firebrick;
 }
+
+.page {
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+}
+.filters {
+  margin: 0 1em;
+}
+
+.filters input {
+  width: 20em;
+}
+
+.clickable {
+  color: green;
+  cursor: pointer;
+}
